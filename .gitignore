@@ -1,0 +1,26 @@
+# Visual Studio
+.vs/
+
+# Build outputs
+bin/
+obj/
+
+# Deployment packages
+Deploy/
+publish/
+publish_OLD_*
+
+# Temporary files
+*.bak
+*.tmp
+
+# User settings
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Windows
+Thumbs.db
+Desktop.ini
