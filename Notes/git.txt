@@ -406,3 +406,11 @@ validate all
 config
 config test
 GitHub backup established
+
+
+
+================================
+git log --graph --oneline --decorate
+
+git push origin TestCreateTag
+git push origin --delete TestCreateTag
