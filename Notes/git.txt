@@ -1,0 +1,408 @@
+===========================================================
+BCETL GIT QUICK REFERENCE
+===========================================================
+
+PURPOSE
+=======
+
+Git provides:
+
+1. Local version control
+2. Change history
+3. GitHub backup
+4. Milestone tagging
+5. Recovery capability
+
+Repository:
+
+https://github.com/edhurtado7/BCETL
+
+Branch:
+
+BCETL
+
+
+GIT CONCEPTS
+============
+
+Working Files
+    ↓
+Staging Area
+    ↓
+Commit History
+    ↓
+GitHub
+
+Working Files
+-------------
+Actual files on disk:
+
+C:\_Ed\SW\BC\BCETL
+
+Examples:
+
+Program.cs
+BCETL.csproj
+Notes\git.txt
+
+Staging Area
+------------
+Files selected for the next commit.
+
+Commit History
+--------------
+Permanent snapshots created by commits.
+
+GitHub
+------
+Cloud backup of committed changes.
+
+
+DAILY WORKFLOW
+==============
+
+1. Verify changed files
+
+git status
+
+
+2. Stage changes
+
+git add .
+
+
+3. Create commit
+
+git commit -m "Description of change"
+
+Examples:
+
+git commit -m "Add config test command"
+
+git commit -m "Add validate all command"
+
+git commit -m "Implement LastSeenUtc"
+
+
+4. Upload commit(s) to GitHub
+
+git push
+
+
+WHAT DOES GIT ADD . MEAN?
+=========================
+
+The dot means:
+
+Current folder
+
+Example:
+
+git add .
+
+means:
+
+Add everything in the current folder and all subfolders
+to Git's staging area.
+
+Current folder:
+
+C:\_Ed\SW\BC\BCETL
+
+Files excluded by .gitignore are skipped.
+
+
+WHAT DOES GIT COMMIT -M DO?
+===========================
+
+Example:
+
+git commit -m "Add config test command"
+
+The text:
+
+Add config test command
+
+is called the commit message.
+
+Purpose:
+
+Describes why the snapshot was created.
+
+The commit message is stored inside the local
+Git repository:
+
+C:\_Ed\SW\BC\BCETL\.git
+
+View commit history:
+
+git log --oneline
+
+
+REPOSITORY INFORMATION
+======================
+
+View current branch
+
+git branch
+
+Expected:
+
+* BCETL
+
+
+View GitHub remote
+
+git remote -v
+
+Expected:
+
+origin  https://github.com/edhurtado7/BCETL.git (fetch)
+origin  https://github.com/edhurtado7/BCETL.git (push)
+
+
+HISTORY
+=======
+
+View abbreviated history
+
+git log --oneline
+
+Example:
+
+bc86af2 BCETL milestone: reconciliation validation config
+
+
+View a specific commit
+
+git show bc86af2
+
+
+TAGS (MILESTONES)
+=================
+
+List local tags
+
+git tag
+
+
+Create a tag
+
+git tag v260830
+
+
+Push a tag to GitHub
+
+git push origin v260830
+
+
+List tags stored on GitHub
+
+git ls-remote --tags origin
+
+
+Show tag details
+
+git show v260830 --stat
+
+
+WHAT DO THE ++++ SYMBOLS MEAN?
+=============================
+
+Example:
+
+SalesHeaderValidationService.cs | 141 ++++++
+
+The number:
+
+141
+
+approximately represents lines added.
+
+The plus signs are a visual histogram.
+
+More plus signs:
+
+++++++
+
+means:
+
+Larger contribution to the commit.
+
+Fewer plus signs:
+
++
+
+means:
+
+Smaller contribution to the commit.
+
+The plus signs are not actual line counts.
+
+
+VERIFY STATUS
+=============
+
+Check repository status
+
+git status
+
+Expected when everything is committed:
+
+nothing to commit, working tree clean
+
+
+Verify local tags
+
+git tag
+
+
+Verify tags stored on GitHub
+
+git ls-remote --tags origin
+
+
+Verify repository remote
+
+git remote -v
+
+
+IMPORTANT: CORRECT FOLDER
+=========================
+
+This works:
+
+cd C:\_Ed\SW\BC\BCETL
+
+git status
+
+
+This fails:
+
+cd C:\Users\ed.hurtado
+
+git status
+
+Error:
+
+fatal: not a git repository
+
+Reason:
+
+The .git folder exists only in:
+
+C:\_Ed\SW\BC\BCETL
+
+
+FILES IGNORED BY GIT
+====================
+
+Git does NOT back up:
+
+.vs/
+bin/
+obj/
+Deploy/
+publish/
+
+because these are generated files.
+
+Git DOES back up:
+
+Authentication/
+BusinessCentral/
+Configuration/
+Data/
+Sql/
+Notes/
+
+Program.cs
+BCETL.csproj
+README.txt
+CLI.txt
+appsettings.json
+.gitignore
+
+
+SECRETS RULE
+============
+
+Never commit:
+
+BCETL_CLIENT_SECRET
+SQL passwords
+OAuth tokens
+Connection-string passwords
+API keys
+
+GitHub Push Protection will block them.
+
+Instead document:
+
+Client Secret:
+Stored in BCETL_CLIENT_SECRET environment variable.
+
+Do not store secrets in Git.
+
+
+RECOVERY COMMANDS
+=================
+
+Undo most recent commit
+But keep file changes
+
+git reset --soft HEAD~1
+
+Result:
+
+Commit removed.
+File changes remain.
+
+
+Reset branch to earlier commit
+
+git reset --hard bc86af2
+
+Result:
+
+Branch returns to commit bc86af2.
+Later commits are discarded.
+
+Use carefully.
+
+
+CURRENT BCETL MILESTONE
+=======================
+
+Repository
+
+https://github.com/edhurtado7/BCETL
+
+
+Branch
+
+BCETL
+
+
+Milestone Commit
+
+bc86af2
+
+
+Tags
+
+v260830
+v2026.08.30
+
+
+Milestone Features
+
+ETL Framework
+Reconciliation
+Validation
+validate sh
+validate sl
+validate all
+config
+config test
+GitHub backup established
