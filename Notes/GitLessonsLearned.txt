@@ -1,4 +1,14 @@
-GitHub Push Protection scans commit history, not just current files.
-Deleting a secret later is insufficient if the secret still exists in an earlier commit being pushed.
+My Daily BCETL Git Commands
+git status
 
-Test Dev Branch Change
+git branch -vv
+
+git log --graph --oneline --decorate --all
+
+These three commands answer about 95% of the questions:
+Where am I?
+What changed?
+What branches exist?
+What needs to be pushed?
+What tags exist?
+What is GitHub missing?
