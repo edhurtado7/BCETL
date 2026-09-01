@@ -1,7 +1,6 @@
 My Daily BCETL Git Commands
 git status
 
-<<<<<<< HEAD
 git branch -vv
 
 git log --graph --oneline --decorate --all
