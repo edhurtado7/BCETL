@@ -1,0 +1,292 @@
+===========================================================
+BCETL BACKUP CHECKLIST
+===========================================================
+
+Purpose
+=======
+
+Maintain synchronized backups of BCETL in:
+
+    swx = Sobel Westex GitHub Enterprise
+
+    eh  = Personal GitHub Backup
+
+
+Repository
+==========
+
+Local Repository:
+
+C:\_Ed\SW\BC\BCETL
+
+
+Verify Repository Health
+========================
+
+git status
+
+Expected:
+
+nothing to commit, working tree clean
+
+
+Verify Current Branch
+=====================
+
+git branch --show-current
+
+Expected:
+
+BCETL
+
+
+Verify Remotes
+==============
+
+git remote -v
+
+Expected:
+
+eh   https://github.com/edhurtado7/BCETL.git
+
+swx  https://sobelwestex.ghe.com/ed-hurtado/BCETL.git
+
+
+Daily Backup Procedure
+======================
+
+1. Check status
+
+git status
+
+
+2. Review changes
+
+git diff
+
+
+3. Stage changes
+
+git add .
+
+
+4. Commit changes
+
+git commit -m "Description of change"
+
+Examples:
+
+git commit -m "Add config test all"
+
+git commit -m "Update reconciliation"
+
+git commit -m "Update project notes"
+
+
+5. Push to Company Repository
+
+git push swx BCETL
+
+
+6. Push to Personal Repository
+
+git push eh BCETL
+
+
+Synchronization Verification
+============================
+
+Refresh both remotes
+
+git fetch --all
+
+
+Verify SWX is current
+
+git log swx/BCETL..BCETL --oneline
+
+Expected:
+
+(no output)
+
+
+Verify EH is current
+
+git log eh/BCETL..BCETL --oneline
+
+Expected:
+
+(no output)
+
+
+Interpretation:
+
+No output
+
+    Remote is synchronized.
+
+Output shown
+
+    Remote is missing one or more commits.
+
+
+Milestone Procedure
+===================
+
+Create tag
+
+git tag vYYMMDD
+
+Example
+
+git tag v260901
+
+
+Push tag to Company Repository
+
+git push swx v260901
+
+
+Push tag to Personal Repository
+
+git push eh v260901
+
+
+Verify tags
+
+git tag
+
+
+Verify remote tags
+
+git ls-remote --tags swx
+
+git ls-remote --tags eh
+
+
+Branch Safety Checks
+====================
+
+Current branch
+
+git status
+
+
+Visual history
+
+git log --graph --oneline --decorate --all
+
+
+Branch locations
+
+git branch -vv
+
+
+Before Any Significant Refactor
+===============================
+
+1. Verify clean status
+
+git status
+
+
+2. Create milestone tag
+
+git tag vYYMMDD
+
+
+3. Push milestone tag
+
+git push swx vYYMMDD
+
+git push eh vYYMMDD
+
+
+Recovery
+========
+
+Undo edits to a tracked file
+
+git restore filename
+
+
+Undo last commit, keep files
+
+git reset --soft HEAD~1
+
+
+Return to a milestone
+
+git reset --hard vYYMMDD
+
+USE WITH CAUTION
+
+
+Never Commit
+============
+
+BCETL_CLIENT_SECRET
+
+Client secrets
+
+OAuth tokens
+
+SQL passwords
+
+Connection string passwords
+
+API keys
+
+
+Store secrets in:
+
+Environment Variables
+
+Credential Managers
+
+Key Vaults
+
+Never in Git.
+
+
+Most Useful Git Commands
+========================
+
+git status
+
+git branch -vv
+
+git remote -v
+
+git fetch --all
+
+git log --graph --oneline --decorate --all
+
+git diff
+
+git tag
+
+
+Weekly BCETL Backup Audit
+=========================
+
+git fetch --all
+
+git status
+
+git log swx/BCETL..BCETL --oneline
+
+git log eh/BCETL..BCETL --oneline
+
+Expected:
+
+Both commands return no output.
+
+Result:
+
+Local Repository
+SWX Repository
+EH Repository
+
+are fully synchronized.
+===========================================================

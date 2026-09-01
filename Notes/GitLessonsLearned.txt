@@ -1,6 +1,7 @@
 My Daily BCETL Git Commands
 git status
 
+<<<<<<< HEAD
 git branch -vv
 
 git log --graph --oneline --decorate --all
@@ -12,3 +13,5 @@ What branches exist?
 What needs to be pushed?
 What tags exist?
 What is GitHub missing?
+=======
+Test Dev Branch Changed by Ed
