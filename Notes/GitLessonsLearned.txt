@@ -1,4 +1,4 @@
 GitHub Push Protection scans commit history, not just current files.
 Deleting a secret later is insufficient if the secret still exists in an earlier commit being pushed.
 
-Test Dev Branch Change
+Test Dev Branch Change--changed test
